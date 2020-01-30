@@ -21,7 +21,19 @@ $(document).ready(function () {
         this.name = name;
         this.symbol = symbol;
     }
+
+    function Square(symbol) {
+        this.symbol = symbol;
+    }
+
     PlayerBook.prototype.addPlayer = function (player) {
         this.players.push(player)
     }
+    function GameBoard() {
+        row1 = [newSquare,"",""];
+        row2 = ["","",""];
+        row3 = ["","",""];
+    }
+
+    var gameboard = new GameBoard();
 });

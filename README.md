@@ -18,8 +18,14 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 |   Behavior    |   Input     |     Output    |
 |--------------:|:-----------:|--------------:|
-| Create form. | user input |  add user input to list |
-| cross off list items | on click | strikethrough list item
+| Create form. | user input |  add user input to variable |
+| Create constructors for players and boxes| add keys/values | constructors created |
+| Create constructor for game board | add 9 boxes to board | Game board with 9 boxes |
+| Add click functionality | User clicks box | User symbol pushes to box if empty. Error code if already populated |
+| Add win conditions | If turn is greater than 5 check for possible wins on board | If any win condition is met then display who won. If not, prompt next player turn |
+|Add tie conditions | If turn = 9 check all win conditions | If none are met then display tie message. |
+|Add reset board functionality | Win or tie is met | Declare winner. Clear board for next game |
+
 
 ## Known Bugs
 
