@@ -13,67 +13,60 @@ $(document).ready(function () {
         console.log(newPlayer1, newPlayer2, playerBook)
     });
 
-// CLICK FUNCTIONS
+    // CLICK FUNCTIONS
 
     $("#1").click(function (event) {
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare1();
-        console.log(newGameBoard.value1);
-        console.log(newGameBoard);
-        console.log(turn);
-
+        newGameBoard.winCheck();
     });
 
     $("#2").click(function (event) {
-        ;
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare2();
-        console.log(newGameBoard.value2);
-        console.log(newGameBoard);
-        console.log(turn);
-
+        newGameBoard.winCheck();
     });
+
     $("#3").click(function (event) {
-        ;
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare3();
-        console.log(newGameBoard.value3);
-        console.log(newGameBoard);
-        console.log(turn);
-
+        newGameBoard.winCheck();
     });
+
     $("#4").click(function (event) {
-        ;
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare4();
-        console.log(newGameBoard.value4);
-        console.log(newGameBoard);
-        console.log(turn);
-
+        newGameBoard.winCheck();
     });
+
     $("#5").click(function (event) {
-        ;
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare5();
-        console.log(newGameBoard.value5);
-        console.log(newGameBoard);
-        console.log(turn);
-
+        newGameBoard.winCheck();
     });
+
     $("#6").click(function (event) {
-        ;
-        // (newGameBoard.value1).("test");
         event.preventDefault();
         newGameBoard.updateSquare6();
-        console.log(newGameBoard.value6);
-        console.log(newGameBoard);
-        console.log(turn);
+        newGameBoard.winCheck();
+    });
 
+    $("#7").click(function (event) {
+        event.preventDefault();
+        newGameBoard.updateSquare7();
+        newGameBoard.winCheck();
+    });
+
+    $("#8").click(function (event) {
+        event.preventDefault();
+        newGameBoard.updateSquare8();
+        newGameBoard.winCheck();
+    });
+
+    $("#9").click(function (event) {
+        event.preventDefault();
+        newGameBoard.updateSquare9();
+        newGameBoard.winCheck();
     });
 });
 
@@ -82,7 +75,6 @@ function PlayerBook() {
 }
 
 var playerBook = new PlayerBook();
-//var squareSymbol = $('#1').attr('id');
 
 function Player(name, playerSymbol) {
     this.name = name;
@@ -91,9 +83,6 @@ function Player(name, playerSymbol) {
 PlayerBook.prototype.addPlayer = function (player) {
     this.players.push(player)
 }
-// function Square(squareSymbol) {
-//     this.symbol = "";
-// }
 
 function Row(value1, value2, value3, value4, value5, value6, value7, value8, value9) {
     this.value1 = value1;
@@ -111,116 +100,212 @@ var newGameBoard = new Row("", "", "", "", "", "", "", "", "");
 
 
 // ALL OF THE PROTOTYPES THAT UPDATE newGameBoard as well as update DOM
+Row.prototype.winCheck = function () {
+    if (turn >= 5) {
+        if (newGameBoard.value1 === "X" && newGameBoard.value2 === "X" && newGameBoard.value3 === "X" ||
+            newGameBoard.value1 === "O" && newGameBoard.value2 === "O" && newGameBoard.value3 === "O" ||
+            newGameBoard.value4 === "X" && newGameBoard.value5 === "X" && newGameBoard.value6 === "X" ||
+            newGameBoard.value4 === "O" && newGameBoard.value5 === "O" && newGameBoard.value6 === "O" ||
+            newGameBoard.value7 === "X" && newGameBoard.value8 === "X" && newGameBoard.value9 === "X" ||
+            newGameBoard.value7 === "O" && newGameBoard.value8 === "O" && newGameBoard.value9 === "O" ||
 
+            newGameBoard.value1 === "X" && newGameBoard.value4 === "X" && newGameBoard.value7 === "X" ||
+            newGameBoard.value1 === "O" && newGameBoard.value4 === "O" && newGameBoard.value7 === "O" ||
+            newGameBoard.value2 === "X" && newGameBoard.value5 === "X" && newGameBoard.value8 === "X" ||
+            newGameBoard.value2 === "O" && newGameBoard.value5 === "O" && newGameBoard.value8 === "O" ||
+            newGameBoard.value3 === "X" && newGameBoard.value6 === "X" && newGameBoard.value9 === "X" ||
+            newGameBoard.value3 === "O" && newGameBoard.value6 === "O" && newGameBoard.value9 === "O" ||
 
-Row.prototype.updateSquare1 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
-    }
-    else {
-        temporarysymbol = "O"
-    }
-    if (this.value1 === "") {
-        newGameBoard.value1 = temporarysymbol
-        turn++
-        $("#1").html(temporarysymbol);
-    }
-    else {
-        alert("space already taken. choose again")
+            newGameBoard.value1 === "X" && newGameBoard.value5 === "X" && newGameBoard.value9 === "X" ||
+            newGameBoard.value1 === "O" && newGameBoard.value5 === "O" && newGameBoard.value9 === "O" ||
+
+            newGameBoard.value3 === "X" && newGameBoard.value5 === "X" && newGameBoard.value7 === "X" ||
+            newGameBoard.value3 === "O" && newGameBoard.value5 === "O" && newGameBoard.value7 === "O") {
+            alert("Player" + temporarysymbol + " " + "Wins the game!")
+        }
+
+        if (turn === 9) {
+            if
+                (newGameBoard.value1 === "X" && newGameBoard.value2 === "X" && newGameBoard.value3 === "X" ||
+                newGameBoard.value1 === "O" && newGameBoard.value2 === "O" && newGameBoard.value3 === "O" ||
+                newGameBoard.value4 === "X" && newGameBoard.value5 === "X" && newGameBoard.value6 === "X" ||
+                newGameBoard.value4 === "O" && newGameBoard.value5 === "O" && newGameBoard.value6 === "O" ||
+                newGameBoard.value7 === "X" && newGameBoard.value8 === "X" && newGameBoard.value9 === "X" ||
+                newGameBoard.value7 === "O" && newGameBoard.value8 === "O" && newGameBoard.value9 === "O" ||
+
+                newGameBoard.value1 === "X" && newGameBoard.value4 === "X" && newGameBoard.value7 === "X" ||
+                newGameBoard.value1 === "O" && newGameBoard.value4 === "O" && newGameBoard.value7 === "O" ||
+                newGameBoard.value2 === "X" && newGameBoard.value5 === "X" && newGameBoard.value8 === "X" ||
+                newGameBoard.value2 === "O" && newGameBoard.value5 === "O" && newGameBoard.value8 === "O" ||
+                newGameBoard.value3 === "X" && newGameBoard.value6 === "X" && newGameBoard.value9 === "X" ||
+                newGameBoard.value3 === "O" && newGameBoard.value6 === "O" && newGameBoard.value9 === "O" ||
+
+                newGameBoard.value1 === "X" && newGameBoard.value5 === "X" && newGameBoard.value9 === "X" ||
+                newGameBoard.value1 === "O" && newGameBoard.value5 === "O" && newGameBoard.value9 === "O" ||
+
+                newGameBoard.value3 === "X" && newGameBoard.value5 === "X" && newGameBoard.value7 === "X" ||
+                newGameBoard.value3 === "O" && newGameBoard.value5 === "O" && newGameBoard.value7 === "O") {
+                alert("Player" + temporarysymbol + " " + "Wins the game!")
+            }
+            else {
+                alert("Tie game!")
+                newGameBoard = ("", "", "", "", "", "", "", "", "");
+                turn = 0;
+            }
+        }
     }
 }
 
-Row.prototype.updateSquare2 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
+    Row.prototype.updateSquare1 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value1 === "") {
+            newGameBoard.value1 = temporarysymbol
+            turn++
+            $("#1").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        temporarysymbol = "O"
-    }
-    if (this.value2 === "") {
-        newGameBoard.value2 = temporarysymbol
-        turn++
-        $("#2").html(temporarysymbol);
-    }
-    else {
-        alert("space already taken. choose again")
-    }
-}
 
-Row.prototype.updateSquare3 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
+    Row.prototype.updateSquare2 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value2 === "") {
+            newGameBoard.value2 = temporarysymbol
+            turn++
+            $("#2").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        temporarysymbol = "O"
-    }
-    if (this.value3 === "") {
-        newGameBoard.value3 = temporarysymbol
-        turn++
-        $("#3").html(temporarysymbol);
-    }
-    else {
-        alert("space already taken. choose again")
-    }
-}
 
-Row.prototype.updateSquare4 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
+    Row.prototype.updateSquare3 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value3 === "") {
+            newGameBoard.value3 = temporarysymbol
+            turn++
+            $("#3").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        temporarysymbol = "O"
-    }
-    if (this.value4 === "") {
-        newGameBoard.value4 = temporarysymbol
-        turn++
-        $("#4").html(temporarysymbol);
-    }
-    else {
-        alert("space already taken. choose again")
-    }
-}
 
-Row.prototype.updateSquare5 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
+    Row.prototype.updateSquare4 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value4 === "") {
+            newGameBoard.value4 = temporarysymbol
+            turn++
+            $("#4").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        temporarysymbol = "O"
-    }
-    if (this.value5 === "") {
-        newGameBoard.value5 = temporarysymbol
-        turn++
-        $("#5").html(temporarysymbol);
-    }
-    else {
-        alert("space already taken. choose again")
-    }
-}
 
-Row.prototype.updateSquare6 = function (value) {
-    if (turn % 2 === 0) {
-        temporarysymbol = "X"
+    Row.prototype.updateSquare5 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value5 === "") {
+            newGameBoard.value5 = temporarysymbol
+            turn++
+            $("#5").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        temporarysymbol = "O"
+
+    Row.prototype.updateSquare6 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value6 === "") {
+            newGameBoard.value6 = temporarysymbol
+            turn++
+            $("#6").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    if (this.value6 === "") {
-        newGameBoard.value6 = temporarysymbol
-        turn++
-        $("#6").html(temporarysymbol);
+
+    Row.prototype.updateSquare7 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value7 === "") {
+            newGameBoard.value7 = temporarysymbol
+            turn++
+            $("#7").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-    else {
-        alert("space already taken. choose again")
+
+    Row.prototype.updateSquare8 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value8 === "") {
+            newGameBoard.value8 = temporarysymbol
+            turn++
+            $("#8").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
     }
-}
+    Row.prototype.updateSquare9 = function (value) {
+        if (turn % 2 === 0) {
+            temporarysymbol = "X"
+        }
+        else {
+            temporarysymbol = "O"
+        }
+        if (this.value9 === "") {
+            newGameBoard.value9 = temporarysymbol
+            turn++
+            $("#9").html(temporarysymbol);
+        }
+        else {
+            alert("space already taken. choose again")
+        }
+    }
 
-turn = 0;
-
-    // function GameBoard() {
-
-    //     row1 = [new Square(),new Square(),new Square(), new Square(),new Square(),new Square(), new Square(),new Square(),new Square()];
-    // }
-
-    // var gameboard = new GameBoard();
-// });
+    turn = 0;
