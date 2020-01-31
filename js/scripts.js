@@ -68,6 +68,10 @@ $(document).ready(function () {
         newGameBoard.updateSquare9();
         newGameBoard.winCheck();
     });
+    $("#resetButton").click(function (event) {
+        event.preventDefault();
+        //resetButton();
+
 });
 
 function PlayerBook() {
@@ -121,7 +125,13 @@ Row.prototype.winCheck = function () {
 
             newGameBoard.value3 === "X" && newGameBoard.value5 === "X" && newGameBoard.value7 === "X" ||
             newGameBoard.value3 === "O" && newGameBoard.value5 === "O" && newGameBoard.value7 === "O") {
-            alert("Player" + temporarysymbol + " " + "Wins the game!")
+                $("#winnerWinnerChickenDinner").fadeToggle();
+                $("#winner").text("Player" + " " + temporarysymbol + " " + "Wins the game!");
+            
+           
+           
+            console.log(newGameBoard);
+
         }
 
         if (turn === 9) {
@@ -145,12 +155,14 @@ Row.prototype.winCheck = function () {
 
                 newGameBoard.value3 === "X" && newGameBoard.value5 === "X" && newGameBoard.value7 === "X" ||
                 newGameBoard.value3 === "O" && newGameBoard.value5 === "O" && newGameBoard.value7 === "O") {
-                alert("Player" + temporarysymbol + " " + "Wins the game!")
+                   $("#winner").text("Player" + temporarysymbol + " " + "Wins the game!");
+                    
+                   
             }
             else {
-                alert("Tie game!")
-                newGameBoard = ("", "", "", "", "", "", "", "", "");
-                turn = 0;
+                $("#itsATie").fadeToggle();
+                
+                
             }
         }
     }
@@ -307,5 +319,7 @@ Row.prototype.winCheck = function () {
             alert("space already taken. choose again")
         }
     }
-
+})
     turn = 0;
+
+   
